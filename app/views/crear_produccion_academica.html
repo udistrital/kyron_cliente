@@ -1,0 +1,106 @@
+<div class="col-md-4" ng-show="crearProduccionAcademica.vista_previa">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Crear Producción Académica
+        </div>
+        <div class="panel-body">
+              <form ng-submit="crearProduccionAcademica.guardar()">
+            <div class="thumbnail">
+                <br>
+                <img src="images/person-flat.png" alt="..." width="150px">
+               
+                <div class="caption">
+                
+                    <md-content class="md-padding" layout-wrap>
+
+                     
+
+                        <label>Título de Producción</label>
+                        <input type="text" ng-model="tituloProduccion" class="form-control" ng-required="true">
+
+
+
+                        <label>Fecha</label>
+                        <input type="date" ng-model="fechaProduccion" ng-required="true"  class="form-control">
+
+
+
+
+                        <label>Pais</label>
+                        <input type="text" ng-model="pais"  class="form-control" ng-required="true">
+
+
+
+                        <label>Ciudad</label>
+                        <input type="text" ng-model="ciudad"  class="form-control" ng-required="true">
+
+
+
+
+                        <label>Número de Autores</label>
+                        <input type="number" min="1" ng-model="numeroAutores"  class="form-control" ng-required="true">
+
+
+
+                        <label>Tipo de Producción Académica</label>
+                        <select ng-model="tipoProduccion"  class="form-control">
+                          <option ng-repeat="tProduccion in crearProduccionAcademica.tipo_produccion" ng-value="tProduccion.Id">{{tProduccion.Nombre}} </option>
+                        </select>
+
+
+
+                        <label>Subtipo de Producción Académica</label>
+                        <select ng-model="subtipoProduccion" ng-change="crearProduccionAcademica.getDatoSubtipo(subtipoProduccion)"  class="form-control">
+                          <option ng-repeat="sProduccion in crearProduccionAcademica.subtipo_produccion | filter: {'TipoProduccion':{'Id':tipoProduccion}}" ng-value="sProduccion.Id">{{sProduccion.Nombre}} </option>
+                        </select>
+
+                        <div ng-repeat="input in infoInput track by input.Id">
+                          <label>{{input.DatoId.Nombre}}</label>
+
+                          <input type="{{input.Dominio.Tipo}}" ng-model="input.Dominio.Valor"  class="form-control" ng-required="true">
+
+                        </div>
+
+                        <div ng-repeat="select in infoSelect track by select.Id">
+                          <label>{{select.DatoId.Nombre}}</label>
+                          <select ng-model="select.Dominio.Valor"   class="form-control">
+                            <option ng-repeat="opcion in crearProduccionAcademica.opcion_dato  | filter: {'Dato':{'Id':select.DatoId.Id }}" ng-value="opcion.Id" ng-value="opcion.Id">{{opcion.NombreOpcion}} </option>
+                          </select>
+                        </div>
+
+
+                </div>
+            </div>
+            <div class="row" align="center" ng-show="crearProduccionAcademica.vista_previa">
+                <input type="submit" class="btn btn-outline btn-success btn-md" value="Submit">
+                <button class="btn btn-outline btn-primary btn-md" ng-click="crearProduccionAcademica.limpiar_seleccion()">Cancelar </button>
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div ng-class="{'col-md-8': crearProduccionAcademica.vista_previa , 'col-md-8 col-md-offset-2': !crearProduccionAcademica.vista_previa}">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Producción Académica
+    </div>
+    <div class="panel-body">
+      <div ui-grid="crearProduccionAcademica.gridOptions" ui-grid-auto-resize ui-grid-selection class="ui_grid"></div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Datos del Subtipo
+    </div>
+    <div class="panel-body">
+      <div id="grid2" ui-grid="crearProduccionAcademica.gridOptionsDatoSubtipo" ui-grid-grouping></div>
+    </div>
+  </div>
+<div class="row" align="center" ng-show="!crearProduccionAcademica.vista_previa">
+  <button class="btn btn-outline btn-primary btn-md" ng-click="crearProduccionAcademica.limpiar_seleccion()">Agregar Producción Académica </button>
+</div>
+<br>
+</div>

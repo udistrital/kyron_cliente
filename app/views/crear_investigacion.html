@@ -1,0 +1,68 @@
+<div class="col-md-4" ng-show="crearInvestigacion.vista_previa">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Crear Investigacion
+        </div>
+        <div class="panel-body">
+            <form ng-submit="crearInvestigacion.guardar()">
+                <div class="thumbnail">
+                    <br>
+                    <img src="images/person-flat.png" alt="..." width="150px">
+                    <div class="caption">
+                        <md-content class="md-padding" layout-wrap>
+
+                            <label>Institución o Entidad</label>
+                            <select ng-model="crearInvestigacion.investigacion.InstitucionId.Id" class="form-control">
+                                <option ng-repeat="iInstitucion in crearInvestigacion.institucion" ng-value="iInstitucion.Id">{{iInstitucion.NombreInstitucion}} </option>
+                            <select>
+
+                            <label>Tipo Investigacion</label>
+                            <select ng-model="crearInvestigacion.investigacion.TipoInvestigacionId.Id" class="form-control">
+                                <option ng-repeat="iTipoInvestigacion in crearInvestigacion.tipo_investigacion" ng-value="iTipoInvestigacion.Id">{{iTipoInvestigacion.NombreTipoInvestigacion}} </option>
+                            <select>
+                  
+                            <label>Fecha de inicio</label>
+
+                            <input ng-model="crearInvestigacion.investigacion.FechaInicio" type="date" class="form-control" ng-required="true">
+                    
+                            <label>Fecha de Finalización</label>
+
+                            <input ng-model="crearInvestigacion.investigacion.FechaFinalizacion" type="date" class="form-control" ng-required="true">
+                   
+                            <label>Nombre Investigacion</label>
+
+                            <input ng-model="crearInvestigacion.investigacion.NombreInvestigacion" type="text" class="form-control" ng-required="true">
+
+                             <label>Tipo Investigacion</label>
+
+                            <input ng-model="crearInvestigacion.investigacion.TipoInvestigacion" type="text" class="form-control" ng-required="true">
+
+                    </md-content>
+
+   
+                </div>
+            </div>
+            <div class="row" align="center" ng-show="crearInvestigacion.vista_previa">
+                <input type="submit" class="btn btn-outline btn-success btn-md" value="Nuevo">
+                <button class="btn btn-outline btn-primary btn-md" ng-click="crearInvestigacion.limpiar_seleccion()">Cancelar </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div ng-class="{'col-md-8': crearInvestigacion.vista_previa , 'col-md-8 col-md-offset-2': !crearInvestigacion.vista_previa}">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Formación Académica
+        </div>
+        <div class="panel-body">
+            <div ui-grid="crearInvestigacion.gridOptions" ui-grid-auto-resize ui-grid-selection class="ui_grid"></div>
+        </div>
+    </div>
+
+    <div class="row" align="center" ng-show="!crearInvestigacion.vista_previa">
+        <button class="btn btn-outline btn-primary btn-md" ng-click="crearInvestigacion.limpiar_seleccion()">Agregar Formación Académica </button>
+    </div>
+    <br>
+</div>

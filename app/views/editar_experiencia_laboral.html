@@ -1,0 +1,54 @@
+<div class="col-md-4" ng-show="editarExperienciaLaboral.vista_previa">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Vista Previa Experiencia Laboral
+        </div>
+        <div class="panel-body">
+            <div class="thumbnail">
+                <br>
+                <img src="images/person-flat.png" alt="..." width="150px">
+                <div class="caption">
+
+                    <div class="alert alert-warning" ng-show="editarExperienciaLaboral.experiencia_actual.Validacion">
+                        <strong>Alerta</strong> El registro ya ha sido validado y no puede ser modificado.
+                    </div>
+
+                    <md-content class="md-padding" layout-wrap>
+
+                        <label>Institución o Entidad</label>
+                        <select ng-model="editarExperienciaLaboral.experiencia_actual.InstitucionId.Id" class="form-control">
+                                <option ng-repeat="iInstitucion in editarExperienciaLaboral.institucion" ng-value="iInstitucion.Id">{{iInstitucion.NombreInstitucion}} </option>
+                            <select>
+
+                                     
+                            <label>Cargo</label>
+
+                            <input ng-model="editarExperienciaLaboral.experiencia_actual.Cargo" type="text" class="form-control">
+
+
+                    </md-content>
+
+   
+                </div>
+            </div>
+      <div class="row" align="center" ng-show="editarExperienciaLaboral.vista_previa">
+        <button class="btn btn-outline btn-success btn-md" ng-show="!editarExperienciaLaboral.experiencia_actual.Validacion" ng-click="editarExperienciaLaboral.guardar()">{{ 'GUARDAR' | translate }} </button>
+        <button class="btn btn-outline btn-danger btn-md" ng-click="editarExperienciaLaboral.eliminar()">{{ 'ELIMINAR' | translate }} </button>
+        <button class="btn btn-outline btn-primary btn-md" ng-click="editarExperienciaLaboral.limpiar_seleccion()">{{ 'CANCELAR' | translate }} </button>
+      </div>
+        </div>
+    </div>
+</div>
+
+<div ng-class="{'col-md-8': editarExperienciaLaboral.vista_previa , 'col-md-8 col-md-offset-2': !editarExperienciaLaboral.vista_previa}">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Experiencia Laboral
+        </div>
+        <div class="panel-body">
+            <div ui-grid="editarExperienciaLaboral.gridOptions" ui-grid-auto-resize ui-grid-selection class="ui_grid"></div>
+        </div>
+    </div>
+
+    <br>
+</div>

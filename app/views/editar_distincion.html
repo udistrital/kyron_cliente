@@ -1,0 +1,54 @@
+<div class="col-md-4" ng-show="editarDistincion.vista_previa">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Vista Previa Distinciones
+        </div>
+        <div class="panel-body">
+            <div class="thumbnail">
+                <br>
+                <img src="images/person-flat.png" alt="..." width="150px">
+                <div class="caption">
+
+                    <div class="alert alert-warning" ng-show="editarDistincion.distincion_actual.Validacion">
+                        <strong>Alerta</strong> El registro ya ha sido validado y no puede ser modificado.
+                    </div>
+
+                    <md-content class="md-padding" layout-wrap>
+
+                        <label>Institución o Entidad</label>
+                        <select ng-model="editarDistincion.distincion_actual.InstitucionId.Id" class="form-control">
+                                <option ng-repeat="iInstitucion in editarDistincion.institucion" ng-value="iInstitucion.Id">{{iInstitucion.NombreInstitucion}} </option>
+                            <select>
+
+                                     
+                            <label>Cargo</label>
+
+                            <input ng-model="editarDistincion.distincion_actual.Nombre" type="text" class="form-control">
+
+
+                    </md-content>
+
+   
+                </div> 
+            </div>
+      <div class="row" align="center" ng-show="editarDistincion.vista_previa">
+       <!-- <button class="btn btn-outline btn-success btn-md" ng-show="!editarDistincion.distincion_actual.Validacion" ng-click="editarDistincion.guardar()">{{ 'GUARDAR' | translate }} </button> -->
+        <button class="btn btn-outline btn-danger btn-md" ng-click="editarDistincion.eliminar()">{{ 'ELIMINAR' | translate }} </button>
+        <button class="btn btn-outline btn-primary btn-md" ng-click="editarDistincion.limpiar_seleccion()">{{ 'CANCELAR' | translate }} </button>
+      </div>
+        </div>
+    </div>
+</div>
+
+<div ng-class="{'col-md-8': editarDistincion.vista_previa , 'col-md-8 col-md-offset-2': !editarDistincion.vista_previa}">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Distinciones
+        </div>
+        <div class="panel-body">
+            <div ui-grid="editarDistincion.gridOptions" ui-grid-auto-resize ui-grid-selection class="ui_grid"></div>
+        </div>
+    </div>
+
+    <br>
+</div>

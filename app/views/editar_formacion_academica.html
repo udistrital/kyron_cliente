@@ -1,0 +1,72 @@
+<div class="col-md-4" ng-show="editarFormacionAcademica.vista_previa">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Vista Previa Formación Académica
+        </div>
+        <div class="panel-body">
+            <div class="thumbnail">
+                <br>
+                <img src="images/person-flat.png" alt="..." width="150px">
+                <div class="caption">
+
+
+                    <div class="alert alert-warning"  ng-show="editarFormacionAcademica.formacion_actual.Validacion">
+                        <strong>Alerta</strong> El registro ya ha sido validado y no puede ser modificado.
+                    </div>
+
+                    <md-content class="md-padding" layout-wrap>
+
+                        <label>Institución o Entidad</label>
+                        <select ng-model="editarFormacionAcademica.formacion_actual.InstitucionId.Id" class="form-control">
+                                <option ng-repeat="iInstitucion in editarFormacionAcademica.institucion" ng-value="iInstitucion.Id">{{iInstitucion.NombreInstitucion}} </option>
+                            <select>
+
+
+         
+                            <label>Programa</label>
+                            <select ng-model="editarFormacionAcademica.formacion_actual.ProgramaId.Id" class="form-control">
+                                <option ng-repeat="iPrograma in editarFormacionAcademica.programa | filter: {'InstitucionId':{'Id':editarFormacionAcademica.formacion_actual.InstitucionId.Id}}"
+                                    ng-value="iPrograma.Id">{{iPrograma.NombrePrograma}} </option>
+                            </select>
+
+
+
+                        <label>Título</label>
+                        <select ng-model="editarFormacionAcademica.formacion_actual.Titulo.Id" class="form-control">
+                                <option ng-repeat="iTitulo in editarFormacionAcademica.titulo | filter: {'Programa':{'Id':editarFormacionAcademica.formacion_actual.ProgramaId.Id}}"
+                                    ng-value="iTitulo.Id">{{iTitulo.Nombre}} </option>
+                            <select>
+          
+                   
+                            <label>Nombre Proyecto</label>
+
+                            <input ng-model="editarFormacionAcademica.formacion_actual.NombreProyecto" type="text" class="form-control">
+
+                             <label>Área Conocimiento</label>
+
+                            <input ng-model="editarFormacionAcademica.formacion_actual.AreaConocimiento" type="text" class="form-control">
+                            
+                    </md-content>
+
+        </div>
+      </div>
+      <div class="row" align="center" ng-show="editarFormacionAcademica.vista_previa">
+        <button class="btn btn-outline btn-success btn-md" ng-show="!editarFormacionAcademica.formacion_actual.Validacion" ng-click="editarFormacionAcademica.guardar()">{{ 'GUARDAR' | translate }} </button>
+        <button class="btn btn-outline btn-danger btn-md" ng-click="editarFormacionAcademica.eliminar()">{{ 'ELIMINAR' | translate }} </button>
+        <button class="btn btn-outline btn-primary btn-md" ng-click="editarFormacionAcademica.limpiar_seleccion()">{{ 'CANCELAR' | translate }} </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-class="{'col-md-8': editarFormacionAcademica.vista_previa , 'col-md-8 col-md-offset-2': !editarFormacionAcademica.vista_previa}">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+     Formación Académica
+    </div>
+    <div class="panel-body">
+      <div ui-grid="editarFormacionAcademica.gridOptions" ui-grid-auto-resize ui-grid-selection class="ui_grid"></div>
+    </div>
+  </div>
+
+  <br>
+</div>

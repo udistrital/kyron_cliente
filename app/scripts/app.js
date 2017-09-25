@@ -151,6 +151,61 @@ angular
         controller: 'CrearInvestigacionCtrl',
         controllerAs: 'crearInvestigacion'
       })
+      .when('/crear_experiencia_docente', {
+        templateUrl: 'views/crear_experiencia_docente.html',
+        controller: 'CrearExperienciaDocenteCtrl',
+        controllerAs: 'crearExperienciaDocente'
+      })
+      .when('/editar_experiencia_docente', {
+        templateUrl: 'views/editar_experiencia_docente.html',
+        controller: 'EditarExperienciaDocenteCtrl',
+        controllerAs: 'editarExperienciaDocente'
+      })
+      .when('/consultar_experiencia_docente', {
+        templateUrl: 'views/consultar_experiencia_docente.html',
+        controller: 'ConsultarExperienciaDocenteCtrl',
+        controllerAs: 'consultarExperienciaDocente'
+      })
+      .when('/validar_experiencia_laboral', {
+        templateUrl: 'views/validar_experiencia_laboral.html',
+        controller: 'ValidarExperienciaLaboralCtrl',
+        controllerAs: 'validarExperienciaLaboral'
+      })
+      .when('/validar_formacion_academica', {
+        templateUrl: 'views/validar_formacion_academica.html',
+        controller: 'ValidarFormacionAcademicaCtrl',
+        controllerAs: 'validarFormacionAcademica'
+      })
+      .when('/crear_categoria_persona', {
+        templateUrl: 'views/crear_categoria_persona.html',
+        controller: 'CrearCategoriaPersonaCtrl',
+        controllerAs: 'crearCategoriaPersona'
+      })
+      .when('/editar_categoria_persona', {
+        templateUrl: 'views/editar_categoria_persona.html',
+        controller: 'EditarCategoriaPersonaCtrl',
+        controllerAs: 'editarCategoriaPersona'
+      })
+      .when('/consultar_categoria_persona', {
+        templateUrl: 'views/consultar_categoria_persona.html',
+        controller: 'ConsultarCategoriaPersonaCtrl',
+        controllerAs: 'consultarCategoriaPersona'
+      })
+      .when('/validar_categoria_persona', {
+        templateUrl: 'views/validar_categoria_persona.html',
+        controller: 'ValidarCategoriaPersonaCtrl',
+        controllerAs: 'validarCategoriaPersona'
+      })
+      .when('/calcular_puntaje', {
+        templateUrl: 'views/calcular_puntaje.html',
+        controller: 'CalcularPuntajeCtrl',
+        controllerAs: 'calcularPuntaje'
+      })
+      .when('/validar_experiencia_docente', {
+        templateUrl: 'views/validar_experiencia_docente.html',
+        controller: 'ValidarExperienciaDocenteCtrl',
+        controllerAs: 'validarExperienciaDocente'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -158,8 +213,8 @@ angular
 
 angular.module('kyronApp').run(function ($rootScope) {
 
-  $rootScope.id =123;
-
+  $rootScope.id = 1015438743;
+  $rootScope.rol = "administrador";
 
 
 

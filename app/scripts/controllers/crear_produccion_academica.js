@@ -20,6 +20,8 @@ angular.module('kyronApp')
     self.id = $rootScope.id;
     self.vista_previa = false;
     self.tr_produccion_academica = {};
+
+    //Grilla que muestra datos de la producción académica
     self.gridOptions = {
       enableFiltering: true,
       enableSorting: true,
@@ -67,11 +69,6 @@ angular.module('kyronApp')
       });
     };
 
-    var get_opcion_dato = function () {
-      produccionAcademicaServices.get('opcion_dato', 'limit=0').then(function (response) {
-        self.opcion_dato = response.data;
-      });
-    };
 
     var get_dato_produccion = function () {
       produccionAcademicaServices.get('dato_produccion', $.param({
@@ -86,7 +83,6 @@ angular.module('kyronApp')
     get_produccion_academica();
     get_tipo_produccion();
     get_subtipo_produccion();
-    get_opcion_dato();
     get_dato_produccion();
 
 
@@ -99,15 +95,13 @@ angular.module('kyronApp')
       self.tr_produccion_academica = {};
     };
 
-
+//Grilla que muestra datos especificos del subtipo contenidos en dato_produccion para cada producción
     self.gridOptionsDatoSubtipo = {};
     self.gridOptionsDatoSubtipo.enableFiltering = true;
     self.gridOptionsDatoSubtipo.treeRowHeaderAlwaysVisible = false;
     self.gridOptionsDatoSubtipo.columnDefs = [
       { field: 'ProduccionAcademicaId.TituloProduccion', displayName: 'Titulo Producción', cellTemplate: '<div ng-if="!col.grouping || col.grouping.groupPriority === undefined || col.grouping.groupPriority === null || ( row.groupHeader && col.grouping.groupPriority === row.treeLevel )" class="ui-grid-cell-contents" title="TOOLTIP">{{COL_FIELD CUSTOM_FILTERS}}</div>', width: 200 },
-      // pre-populated search field
       { field: 'DatoSubtipoId.DatoId.Nombre', displayName: 'Dato', width: 300 },
-      // no filter input
       { field: 'Valor', headerCellClass: $scope.highlightFilteredHeader,cellFilter: 'filtroDatoProduccion:this' , width: 300 }
     ];
     self.gridOptionsDatoSubtipo.onRegisterApi = function (gridApi) {
@@ -120,7 +114,7 @@ angular.module('kyronApp')
 
 
 
-
+//Método que obtiene los datos que están relacionados con el subtipo
     self.getDatoSubtipo = function (idSubtipo) {
       self.paramSubtipoProduccion = $.param({
         query: "SubtipoProduccion:" + idSubtipo
@@ -147,8 +141,32 @@ angular.module('kyronApp')
 
     };
 
+//Método que recibe el id del dato idOpcion para obtener la lista de opciones que se mostraran en los select del dato_subtipo
+    $scope.obtenerOpcion = function (idOpcion) {
+      self.paramOpcion = $.param({
+        query: "Dato:" + idOpcion,
+        limit: 0
+      });
 
+      produccionAcademicaServices.get("opcion_dato", self.paramOpcion).then(function (response) {
+        self.opcion_dato = [];
+        self.opcion_dato = response.data;
+      });
 
+    };
+
+      var limpiar_formulario = function(){
+         $scope.ciudad = null;
+         $scope.numeroAutores= null;
+         $scope.pais= null;
+          $scope.tipoProduccion= null;
+         $scope.subtipoProduccion= null;
+         $scope.tituloProduccion= null;
+         $scope.fechaProduccion= null;
+         $scope.infoInput = [];
+         $scope.infoSelect = [];
+      };
+//Método que hace una peticion POST al apiProduccionAcadémica para guardar usando la transacción tr_produccion_academica
     self.guardar = function () {
       var dataProduccionAcademica = {
              "Ciudad": $scope.ciudad,
@@ -163,11 +181,13 @@ angular.module('kyronApp')
              "Validacion": false,
              "FechaDato" : new Date(),
              "Vigente" : true
-           }
+           };
 
 
            var dataDatoProduccion = [];
 
+
+//Se agregan los datos de los input del dato_subtipo al arreglo de dato_produccion
            for (var i = 0; i < $scope.infoInput.length; i++) {
 
 
@@ -176,7 +196,7 @@ angular.module('kyronApp')
                "Valor": $scope.infoInput[i].Dominio.Valor.toString()
              });
            }
-
+//Se agregan los datos de los select del dato_subtipo al arreglo de dato_produccion
            for (var j = 0; j < $scope.infoSelect.length; j++) {
 
              dataDatoProduccion.push({
@@ -191,11 +211,12 @@ angular.module('kyronApp')
           if (response.status === 201) {
             swal(
               'Buen trabajo!',
-              'Añadió la formación con éxito',
+              'Añadió la información con éxito',
               'success'
             );
             get_produccion_academica();
             get_dato_produccion();
+            limpiar_formulario();
           } else {
             swal(
               'Ha ocurrido un error',

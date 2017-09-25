@@ -25,6 +25,8 @@ angular.module('kyronApp')
       enableRowSelection: true,
       enableRowHeaderSelection: false,
       columnDefs: [{
+        field: 'PersonaId', displayName: 'Persona', width: 300
+      },{
         field: 'InstitucionId.NombreInstitucion', displayName: 'Institución', width: 400
       },
       {
@@ -50,7 +52,7 @@ angular.module('kyronApp')
     self.gridOptions.multiSelect = false;
     var get_formacion_academica = function () {
       formacionAcademicaServices.get('formacion_academica', $.param({
-        query: "PersonaId:" + self.id + ",Vigente:" + true,
+        query: "Vigente:" + true,
         limit: 0
       })).then(function (response) {
         self.gridOptions.data = response.data;

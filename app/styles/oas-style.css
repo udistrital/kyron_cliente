@@ -459,3 +459,10 @@ table.dataTable thead .sorting:after {
   background-color: rgba(0, 62, 101, 1);
   border-color: #ddd;
 }
+
+.ng-invalid.ng-dirty{
+  border-color: red;
+}
+.ng-valid.ng-dirty{
+  border-color: green;
+}

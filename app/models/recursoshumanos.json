@@ -1,0 +1,46 @@
+[{
+  "Id": 1,
+  "Nombre": "Consultas",
+  "Url": "",
+  "Opciones": [{
+    "Id": 1,
+    "Nombre": " Consultar Producción Académica",
+    "Url": "consultar_produccion_academica",
+    "Opciones": null
+  }, {
+    "Id": 2,
+    "Nombre": " Consultar Categoria",
+    "Url": "consultar_categoria_persona",
+    "Opciones": null
+  },{
+    "Id": 3,
+    "Nombre": " Consultar Experiencia Laboral",
+    "Url": "consultar_experiencia_laboral",
+    "Opciones": null
+  },{
+    "Id": 4,
+    "Nombre": " Consultar Experiencia Docente",
+    "Url": "consultar_experiencia_docente",
+    "Opciones": null
+  },{
+    "Id": 5,
+    "Nombre": " Consultar Formación Académica",
+    "Url": "consultar_formacion_academica",
+    "Opciones": null
+  },{
+    "Id": 6,
+    "Nombre": " Consultar  Distinción",
+    "Url": "consultar_distincion",
+    "Opciones": null
+  },{
+    "Id": 7,
+    "Nombre": " Consultar  Investigación",
+    "Url": "consultar_investigacion",
+    "Opciones": null
+  },{
+    "Id": 8,
+    "Nombre": " Consultar  Idiomas",
+    "Url": "consultar_persona_idioma",
+    "Opciones": null
+  }]
+  }]

@@ -14,7 +14,7 @@ angular.module('kyronApp')
       'AngularJS',
       'Karma'
     ];
-    $rootScope.id = 123;
+
 
     var self = this;
     self.id = $rootScope.id;
@@ -65,21 +65,21 @@ angular.module('kyronApp')
       });
     };
 
-    var get_programa = function () {
+  /*  var get_programa = function () {
       formacionAcademicaServices.get('programa', 'limit=0').then(function (response) {
         self.programa = response.data;
       });
-    };
+    };*/
 
-    var get_titulo = function () {
+  /*  var get_titulo = function () {
       formacionAcademicaServices.get('titulo', 'limit=0').then(function (response) {
         self.titulo = response.data;
       });
-    };
+    }; */
     get_formacion_academica();
     get_institucion();
-    get_programa();
-    get_titulo();
+  //  get_programa();
+  //  get_titulo();
 
     self.gridOptions.onRegisterApi = function (gridApi) {
       self.gridApi = gridApi;
@@ -90,18 +90,42 @@ angular.module('kyronApp')
       self.formacion_academica = {};
     };
 
+
+    self.obtenerprogramas = function (idinstitucion) {
+      self.paramPrograma = $.param({
+        query: "InstitucionId.Id:" + idinstitucion
+      });
+
+      formacionAcademicaServices.get("programa", self.paramPrograma).then(function (response) {
+        self.programa = response.data;
+      });
+
+    };
+
+    self.obtenertitulos = function (idprograma) {
+      self.paramTitulo = $.param({
+        query: "Programa.Id:" + idprograma
+      });
+
+      formacionAcademicaServices.get("titulo", self.paramTitulo).then(function (response) {
+        self.titulo= response.data;
+      });
+
+    };
     self.guardar = function () {
+
       self.formacion_academica.PersonaId = self.id;
       self.formacion_academica.FechaDato = new Date();
       self.formacion_academica.Validacion = false;
       self.formacion_academica.Vigente = true;
+      if(self.formacion_academica.FechaInicio < self.formacion_academica.FechaFinalizacion){
       formacionAcademicaServices.post('formacion_academica', self.formacion_academica)
         .then(function (response) {
           console.log(response);
           if (response.status === 201) {
             swal(
               'Buen trabajo!',
-              'Añadió la formación con éxito',
+              'Añadió la información con éxito',
               'success'
             );
 
@@ -115,6 +139,15 @@ angular.module('kyronApp')
           self.limpiar_seleccion();
           get_formacion_academica();
         });
+      }
+      else {
+        swal(
+          'Ha ocurrido un error',
+          'La fecha de inicio debe ser menor a la fecha de finalización',
+          'error'
+        );
+      }
+
     };
 
   });

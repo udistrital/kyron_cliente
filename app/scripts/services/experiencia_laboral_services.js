@@ -11,7 +11,7 @@ angular.module('kyronApp')
   .factory('experienciaLaboralServices', function ($http) {
     // Service logic
     // ...
-    var path = "http://localhost:8082/v1/";
+    var path = "http://10.20.2.17:8084/v1/"; //8084
 
     // Public API here
     return {

@@ -8,7 +8,7 @@
  * Controller of the kyronApp
  */
 angular.module('kyronApp')
-  .controller('EditarExperienciaLaboralCtrl', function (experienciaLaboralServices, $rootScope, $scope) {
+  .controller('EditarExperienciaLaboralCtrl', function (experienciaLaboralServices, $rootScope) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -37,6 +37,11 @@ angular.module('kyronApp')
       {
         field: 'FechaFinalizacion', displayName: 'Fecha Finalización', cellFilter: 'date:"yyyy-MM-dd"', width: 100
       },
+      {
+        field: 'Acciones',
+        cellTemplate: '<button class="btn btn-danger btn-circle" ng-click="grid.appScope.editarExperienciaLaboral.eliminar(row.entity)"><i class="glyphicon glyphicon-trash"></i></button>&nbsp;<button type="button" class="btn btn-success btn-circle" ng-click="grid.appScope.editarExperienciaLaboral.editar(row.entity)"><i class="glyphicon glyphicon-pencil"></i></button>',
+        width: 150
+      }
       ]
     };
     self.gridOptions.multiSelect = false;
@@ -62,12 +67,6 @@ angular.module('kyronApp')
 
         self.gridOptions.onRegisterApi = function (gridApi) {
       self.gridApi = gridApi;
-      gridApi.selection.on.rowSelectionChanged($scope, function (row) {
-        self.experiencia_actual = row.entity;
-        if (self.experiencia_actual !== null) {
-          self.vista_previa = true;
-        }
-      });
     };
 
     self.limpiar_seleccion = function () {
@@ -75,19 +74,26 @@ angular.module('kyronApp')
     };
 
 
+    self.editar = function(experiencia){
+      self.experiencia_actual= experiencia;
+      if (self.experiencia_actual !== null) {
+        self.vista_previa = true;
+      }
+    };
+
     self.guardar = function () {
-      if(self.experiencia_actual.Validacion == false){
+      if(self.experiencia_actual.Validacion === false){
       self.experiencia_actual.FechaDato = new Date();
       experienciaLaboralServices.put('experiencia_laboral', self.experiencia_actual.Id, self.experiencia_actual)
         .then(function (response) {
           if (response.data === 'OK') {
-           
+            get_experiencia_laboral();
             swal(
               'Buen trabajo!',
               'Se editó correctamente!',
               'success'
             );
-            
+
           } else {
               swal(
                 'No se ha podido editar!',
@@ -108,7 +114,7 @@ angular.module('kyronApp')
 
        get_experiencia_laboral();
     };
-    self.eliminar = function () {
+    self.eliminar = function (experiencia) {
 
       swal({
         title: 'Está seguro?',
@@ -120,12 +126,13 @@ angular.module('kyronApp')
         cancelButtonText: 'Cancelar',
         confirmButtonText: 'Eliminar'
       }).then(function () {
-       self.experiencia_actual.FechaDato = new Date();
-       self.experiencia_actual.Vigente = false; 
-       experienciaLaboralServices.put('experiencia_laboral', self.experiencia_actual.Id, self.experiencia_actual)
+      experiencia.FechaDato = new Date();
+      experiencia.Vigente = false;
+       experienciaLaboralServices.put('experiencia_laboral', experiencia.Id, experiencia)
           .then(function (response) {
 
             if (response.data === 'OK') {
+              self.gridOptions.data = [];
               get_experiencia_laboral();
               self.limpiar_seleccion();
               swal(
@@ -143,8 +150,8 @@ angular.module('kyronApp')
           });
 
       }).catch(swal.noop);
+
+  get_experiencia_laboral();
     };
 
   });
-
-

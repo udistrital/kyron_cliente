@@ -1,0 +1,206 @@
+[
+    {
+    "Id": 1,
+    "Nombre": "Gestión Información Hoja de Vida",
+    "Url": "",
+    "Opciones": [
+  {
+    "Id": 1,
+    "Nombre": "Producción Académica",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Producción Académica",
+      "Url": "crear_produccion_academica",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Producción Académica",
+      "Url": "editar_produccion_academica",
+      "Opciones": null
+    }]
+  }
+  , {
+    "Id": 1,
+    "Nombre": "Experiencia Laboral",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Experiencia Laboral",
+      "Url": "crear_experiencia_laboral",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Experiencia Laboral",
+      "Url": "editar_experiencia_laboral",
+      "Opciones": null
+    }]
+  }, {
+    "Id": 1,
+    "Nombre": "Experiencia Docente",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Experiencia Docente",
+      "Url": "crear_experiencia_docente",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Experiencia Docente",
+      "Url": "editar_experiencia_docente",
+      "Opciones": null
+    }]
+  }, {
+    "Id": 1,
+    "Nombre": "Distinciones",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Distincion",
+      "Url": "crear_distincion",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Distincion",
+      "Url": "editar_distincion",
+      "Opciones": null
+    }]
+  }, {
+    "Id": 1,
+    "Nombre": "Formación Académica",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Formación Académica",
+      "Url": "crear_formacion_academica",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Formación Académica",
+      "Url": "editar_formacion_academica",
+      "Opciones": null
+    }
+    ]
+  }, {
+    "Id": 1,
+    "Nombre": "Idioma",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Idioma",
+      "Url": "crear_persona_idioma",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Idioma",
+      "Url": "editar_persona_idioma",
+      "Opciones": null
+    }]
+  }, {
+    "Id": 1,
+    "Nombre": "Investigacion",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Investigacion",
+      "Url": "crear_investigacion",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Investigacion",
+      "Url": "editar_investigacion",
+      "Opciones": null
+    }]
+  }, {
+    "Id": 1,
+    "Nombre": "Categoria",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Categoria",
+      "Url": "crear_categoria_persona",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Categoria",
+      "Url": "editar_categoria_persona",
+      "Opciones": null
+    }]
+  } ]
+  },{
+    "Id": 1,
+    "Nombre": "Validación",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Validar Producción Académica",
+      "Url": "validar_produccion_academica",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Validar Categoria",
+      "Url": "validar_categoria_persona",
+      "Opciones": null
+    },{
+      "Id": 3,
+      "Nombre": " Validar Experiencia Laboral",
+      "Url": "validar_experiencia_laboral",
+      "Opciones": null
+    },{
+      "Id": 4,
+      "Nombre": " Validar Formación Académica",
+      "Url": "validar_formacion_academica",
+      "Opciones": null
+    },{
+      "Id": 5,
+      "Nombre": " Validar Experiencia Docente",
+      "Url": "validar_experiencia_docente",
+      "Opciones": null
+    }]
+  }, {
+    "Id": 1,
+    "Nombre": "Consultas",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Consultar Producción Académica",
+      "Url": "consultar_produccion_academica",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Consultar Categoria",
+      "Url": "consultar_categoria_persona",
+      "Opciones": null
+    },{
+      "Id": 3,
+      "Nombre": " Consultar Experiencia Laboral",
+      "Url": "consultar_experiencia_laboral",
+      "Opciones": null
+    },{
+      "Id": 4,
+      "Nombre": " Consultar Experiencia Docente",
+      "Url": "consultar_experiencia_docente",
+      "Opciones": null
+    },{
+      "Id": 5,
+      "Nombre": " Consultar Formación Académica",
+      "Url": "consultar_formacion_academica",
+      "Opciones": null
+    },{
+      "Id": 6,
+      "Nombre": " Consultar  Distinción",
+      "Url": "consultar_distincion",
+      "Opciones": null
+    },{
+      "Id": 7,
+      "Nombre": " Consultar  Investigación",
+      "Url": "consultar_investigacion",
+      "Opciones": null
+    },{
+      "Id": 8,
+      "Nombre": " Consultar  Idiomas",
+      "Url": "consultar_persona_idioma",
+      "Opciones": null
+    }]
+    }
+  ]

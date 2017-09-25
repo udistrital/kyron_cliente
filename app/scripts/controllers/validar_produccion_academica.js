@@ -26,7 +26,9 @@ angular.module('kyronApp')
       enableRowSelection: false,
       enableRowHeaderSelection: false,
       rowHeight:30,
-      columnDefs: [
+      columnDefs: [{
+        field: 'PersonaId', displayName: 'Persona', width: 300
+      },
         {
           field: 'TituloProduccion', displayName: 'Titulo Producción', width: 200
         },
@@ -55,7 +57,7 @@ angular.module('kyronApp')
 
     var get_produccion_academica = function () {
       produccionAcademicaServices.get('produccion_academica', $.param({
-        query: "PersonaId:" + self.id + ",Vigente:" + true,
+        query: "Vigente:" + true,
         limit: 0
       })).then(function (response) {
         self.gridOptions.data = response.data;
@@ -65,7 +67,7 @@ angular.module('kyronApp')
 
     var get_dato_produccion = function () {
       produccionAcademicaServices.get('dato_produccion', $.param({
-        query: "ProduccionAcademicaId.PersonaId:" + self.id + ",ProduccionAcademicaId.Vigente:" + true,
+        query: "ProduccionAcademicaId.Vigente:" + true,
         limit: 0
       })).then(function (response) {
         self.gridOptionsDatoSubtipo.data = response.data;
@@ -117,14 +119,14 @@ angular.module('kyronApp')
         produccion_academica.Validacion = true;
     produccionAcademicaServices.put('produccion_academica', id, produccion_academica).then(function(response){
         if (response.data === 'OK') {
-           
+
             swal(
               'Buen trabajo!',
               'Se validó correctamente!',
               'success'
             );
              get_produccion_academica();
-            
+
           } else {
               swal(
                 'No se ha podido validar!',
@@ -136,5 +138,5 @@ angular.module('kyronApp')
 
     });
       });
-  }
+  };
   });

@@ -1,1 +1,40 @@
-<p>This is the editar_persona_idioma view.</p>
+<div class="col-md-4" ng-show="editarPersonaIdioma.vista_previa">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Vista Previa Idioma
+        </div>
+        <div class="panel-body">
+            <div class="thumbnail">
+                <br>
+                <img src="images/person-flat.png" alt="..." width="150px">
+                <div class="caption">
+
+
+                    <div class="alert alert-warning"  ng-show="editarPersonaIdioma.idioma_actual.Validacion">
+                        <strong>Alerta</strong> El registro ya ha sido validado y no puede ser modificado.
+                    </div>
+
+
+        </div>
+      </div>
+      <div class="row" align="center" ng-show="editarPersonaIdioma.vista_previa">
+        <button class="btn btn-outline btn-success btn-md" ng-show="!editarPersonaIdioma.idioma_actual.Validacion" ng-click="editarPersonaIdioma.guardar()">{{ 'GUARDAR' | translate }} </button>
+        <button class="btn btn-outline btn-danger btn-md" ng-click="editarPersonaIdioma.eliminar()">{{ 'ELIMINAR' | translate }} </button>
+        <button class="btn btn-outline btn-primary btn-md" ng-click="editarPersonaIdioma.limpiar_seleccion()">{{ 'CANCELAR' | translate }} </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-class="{'col-md-8': editarPersonaIdioma.vista_previa , 'col-md-8 col-md-offset-2': !editarPersonaIdioma.vista_previa}">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        Idioma   
+    </div>
+    <div class="panel-body">
+      <div ui-grid="editarPersonaIdioma.gridOptions" ui-grid-auto-resize ui-grid-selection class="ui_grid"></div>
+    </div>
+  </div>
+
+  <br>
+</div>

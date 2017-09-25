@@ -1,0 +1,47 @@
+<div class="col-md-4" ng-show="editarCategoriaPersona.vista_previa">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Vista Previa Categoria Persona
+        </div>
+        <div class="panel-body">
+            <div class="thumbnail">
+                <br>
+                <img src="images/person-flat.png" alt="..." width="150px">
+                <div class="caption">
+
+                    <div class="alert alert-warning" ng-show="editarCategoriaPersona.distincion_actual.Validacion">
+                        <strong>Alerta</strong> El registro ya ha sido validado y no puede ser modificado.
+                    </div>
+
+                    <md-content class="md-padding" layout-wrap>
+
+                        <label>Categoria</label>
+                        <select ng-model="editarCategoriaPersona.categoria_actual.IdTipoCategoria.Id" class="form-control">
+                                <option ng-repeat="iTipoCategoria in editarCategoriaPersona.tipo_categoria" ng-value="iTipoCategoria.Id">{{iTipoCategoria.NombreCategoria}} </option>
+                            <select>
+
+                    </md-content>
+
+
+                </div>
+            </div>
+      <div class="row" align="center" ng-show="editarCategoriaPersona.vista_previa">
+       <button class="btn btn-outline btn-success btn-md" ng-show="!editarCategoriaPersona.categoria_actual.Validacion" ng-click="editarCategoriaPersona.guardar()">{{ 'GUARDAR' | translate }} </button>
+        <button class="btn btn-outline btn-primary btn-md" ng-click="editarCategoriaPersona.limpiar_seleccion()">{{ 'CANCELAR' | translate }} </button>
+      </div>
+        </div>
+    </div>
+</div>
+
+<div ng-class="{'col-md-8': editarCategoriaPersona.vista_previa , 'col-md-8 col-md-offset-2': !editarCategoriaPersona.vista_previa}">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Categoria Persona
+        </div>
+        <div class="panel-body">
+            <div ui-grid="editarCategoriaPersona.gridOptions" ui-grid-auto-resize ui-grid-selection class="ui_grid"></div>
+        </div>
+    </div>
+
+    <br>
+</div>

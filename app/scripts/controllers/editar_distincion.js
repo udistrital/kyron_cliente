@@ -8,7 +8,7 @@
  * Controller of the kyronApp
  */
 angular.module('kyronApp')
-  .controller('EditarDistincionCtrl', function (distincionServices, $rootScope, $scope) {
+  .controller('EditarDistincionCtrl', function (distincionServices, $rootScope,$scope) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -33,6 +33,12 @@ angular.module('kyronApp')
       {
         field: 'Fecha', displayName: 'Fecha', cellFilter: 'date:"yyyy-MM-dd"', width: 100
       },
+      {
+        field: 'Acciones',
+        cellTemplate: '<button class="btn btn-danger btn-circle" ng-click="grid.appScope.editarDistincion.eliminar(row.entity)"><i class="glyphicon glyphicon-trash"></i></button>',
+        width: 150
+      }
+
       ]
     };
     self.gridOptions.multiSelect = false;
@@ -56,55 +62,44 @@ angular.module('kyronApp')
     get_distincion();
     get_institucion();
 
-      self.gridOptions.onRegisterApi = function (gridApi) {
+        self.gridOptions.onRegisterApi = function (gridApi) {
       self.gridApi = gridApi;
-      gridApi.selection.on.rowSelectionChanged($scope, function (row) {
-        self.distincion_actual = row.entity;
-        if (self.distincion_actual !== null) {
-          self.vista_previa = true;
-        }
-      });
     };
 
     self.limpiar_seleccion = function () {
       self.vista_previa = null;
     };
 
+    self.editar = function(experiencia){
+      self.distincion_actual= experiencia;
+      if (self.distincion_actual !== null) {
+        self.vista_previa = true;
+      }
+      $scope.Date=self.distincion_actual.FechaDato;
+    };
+
 
     self.guardar = function () {
-      if(self.distincion_actual.Validacion == false){
       self.distincion_actual.FechaDato = new Date();
       distincionServices.put('distincion', self.distincion_actual.Id, self.distincion_actual)
         .then(function (response) {
           if (response.data === 'OK') {
-           
+            get_distincion();
             swal(
               'Buen trabajo!',
               'Se editó correctamente!',
               'success'
             );
-            
-          } else {
-              swal(
-                'No se ha podido editar!',
-                response.data,
-                'error'
-              );
-            }
             self.limpiar_seleccion();
-      });}
-      else{
-            swal(
-              'No se ha podido editar!',
-              'La información ya ha sido validada',
-              'error'
-            );
-          self.limpiar_seleccion();
-      }
+          }
+      });
+            self.limpiar_seleccion();
 
-       get_distincion();
     };
-    self.eliminar = function () {
+
+
+
+    self.eliminar = function (experiencia) {
 
       swal({
         title: 'Está seguro?',
@@ -116,13 +111,13 @@ angular.module('kyronApp')
         cancelButtonText: 'Cancelar',
         confirmButtonText: 'Eliminar'
       }).then(function () {
-       self.distincion_actual.FechaDato = new Date();
-       self.distincion_actual.Vigente = false; 
-       distincionServices.put('distincion', self.distincion_actual.Id, self.distincion_actual)
+      experiencia.FechaDato = new Date();
+      experiencia.Vigente = false;
+       distincionServices.put('distincion', experiencia.Id, experiencia)
           .then(function (response) {
 
             if (response.data === 'OK') {
-              get_distincion();
+    get_distincion();
               self.limpiar_seleccion();
               swal(
                 'Eliminado!',
@@ -139,8 +134,8 @@ angular.module('kyronApp')
           });
 
       }).catch(swal.noop);
+
+    get_distincion();
     };
 
   });
-
-

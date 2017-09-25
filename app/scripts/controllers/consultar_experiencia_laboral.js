@@ -24,6 +24,8 @@ angular.module('kyronApp')
       enableRowSelection: true,
       enableRowHeaderSelection: false,
       columnDefs: [{
+        field: 'PersonaId', displayName: 'Persona', width: 300
+      },{
         field: 'InstitucionId.NombreInstitucion', displayName: 'Institución', width: 400
       },
       {
@@ -40,7 +42,7 @@ angular.module('kyronApp')
     self.gridOptions.multiSelect = false;
     var get_experiencia_laboral = function () {
       experienciaLaboralServices.get('experiencia_laboral', $.param({
-        query: "PersonaId:" + self.id + ",Vigente:" + true,
+        query: "Vigente:" + true,
         limit: 0
       })).then(function (response) {
         self.gridOptions.data = response.data;

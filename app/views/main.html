@@ -1,14 +1,18 @@
 <br>
 <div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="page-header">  {{ 'TITULO' | translate }} </h3>
+  <div class="panel-heading">
+    <h3 class="page-header"> {{ 'TITULO' | translate }} </h3>
+  </div>
+  <div class="panel-body" ng-controller="menuCtrl">
+    <div class="container" style="text-align:center">
+      <img src="images/Logo_kyron.jpg" alt="..." width="800" >
     </div>
-    <div class="panel-body">
-      <p>
-        {{ 'MENSAJE_INICIAL' | translate }}
-      </p>
-    </div>
-    <div class="panel-footer">
-        Panel Footer
-    </div>
+
+    <!--<label>Id Usuario</label>
+    <input type="number" ng-model="main.Id" class="form-control">
+    <label>Rol</label>
+    <input type="text" ng-model="main.Rol" class="form-control">
+
+    <button class="btn btn-outline btn-success btn-md" ng-click="main.login()">Login </button>-->
+  </div>
 </div>

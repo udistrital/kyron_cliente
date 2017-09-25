@@ -1,0 +1,129 @@
+[ {
+    "Id": 1,
+    "Nombre": "Gesión Información Hoja de Vida",
+    "Url": "",
+    "Opciones": [
+  {
+    "Id": 1,
+    "Nombre": "Producción Académica",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Producción Académica",
+      "Url": "crear_produccion_academica",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Producción Académica",
+      "Url": "editar_produccion_academica",
+      "Opciones": null
+    }]
+  }
+  , {
+    "Id": 1,
+    "Nombre": "Experiencia Laboral",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Experiencia Laboral",
+      "Url": "crear_experiencia_laboral",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Experiencia Laboral",
+      "Url": "editar_experiencia_laboral",
+      "Opciones": null
+    }]
+  }, {
+    "Id": 1,
+    "Nombre": "Experiencia Docente",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Experiencia Docente",
+      "Url": "crear_experiencia_docente",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Experiencia Docente",
+      "Url": "editar_experiencia_docente",
+      "Opciones": null
+    }]
+  }, {
+    "Id": 1,
+    "Nombre": "Distinciones",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Distincion",
+      "Url": "crear_distincion",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Distincion",
+      "Url": "editar_distincion",
+      "Opciones": null
+    }]
+  }, {
+    "Id": 1,
+    "Nombre": "Formación Académica",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Formación Académica",
+      "Url": "crear_formacion_academica",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Formación Académica",
+      "Url": "editar_formacion_academica",
+      "Opciones": null
+    }
+    ]
+  }, {
+    "Id": 1,
+    "Nombre": "Idioma",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Idioma",
+      "Url": "crear_persona_idioma",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Idioma",
+      "Url": "editar_persona_idioma",
+      "Opciones": null
+    }]
+  }, {
+    "Id": 1,
+    "Nombre": "Investigacion",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Investigacion",
+      "Url": "crear_investigacion",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Investigacion",
+      "Url": "editar_investigacion",
+      "Opciones": null
+    }]
+  }, {
+    "Id": 1,
+    "Nombre": "Categoria",
+    "Url": "",
+    "Opciones": [{
+      "Id": 1,
+      "Nombre": " Crear Categoria",
+      "Url": "crear_categoria_persona",
+      "Opciones": null
+    }, {
+      "Id": 2,
+      "Nombre": " Editar Categoria",
+      "Url": "editar_categoria_persona",
+      "Opciones": null
+    }]
+  } ]
+  }]

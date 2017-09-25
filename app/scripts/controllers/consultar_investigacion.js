@@ -24,6 +24,8 @@ angular.module('kyronApp')
       enableRowSelection: true,
       enableRowHeaderSelection: false,
       columnDefs: [{
+        field: 'PersonaId', displayName: 'Persona', width: 300
+      },{
         field: 'InstitucionId.NombreInstitucion', displayName: 'Institución', width: 400
       },
       {
@@ -36,9 +38,6 @@ angular.module('kyronApp')
         field: 'FechaFinalizacion', displayName: 'Fecha Finalización', cellFilter: 'date:"yyyy-MM-dd"', width: 100
       },
       {
-        field: 'TipoInvestigacion', displayName: 'Tipo Investigacion', width: 300
-      },
-      {
         field: 'NombreInvestigacion', displayName: 'Nombre Investigacion', width: 500
       },
       ]
@@ -46,7 +45,7 @@ angular.module('kyronApp')
     self.gridOptions.multiSelect = false;
     var get_investigacion = function () {
       investigacionServices.get('investigacion', $.param({
-        query: "PersonaId:" + self.id + ",Vigente:" + true,
+        query: "Vigente:" + true,
         limit: 0
       })).then(function (response) {
         self.gridOptions.data = response.data;

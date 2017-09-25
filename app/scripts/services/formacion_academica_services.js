@@ -11,7 +11,7 @@ angular.module('kyronApp')
   .factory('formacionAcademicaServices', function ($http) {
     // Service logic
     // ...
-    var path = "http://localhost:8080/v1/";
+    var path = "http://10.20.2.17:8085/v1/";//8085
 
     // Public API here
     return {

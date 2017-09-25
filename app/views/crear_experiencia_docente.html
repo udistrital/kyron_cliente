@@ -1,14 +1,92 @@
-<br>
-<div class="panel panel-default">
+<div class="col-md-4" ng-show="crearExperienciaDocente.vista_previa">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Crear Experiencia Docente
+        </div>
+        <div class="panel-body">
+              <form ng-submit="crearExperienciaDocente.guardar()">
+            <div class="thumbnail">
+                <br>
+                <img src="images/person-flat.png" alt="..." width="150px">
+               
+                <div class="caption">
+                
+                    <md-content class="md-padding" layout-wrap>
+
+                     
+                        <label>Institución o Entidad</label>
+                            <select ng-model= "crearExperienciaDocente.experiencia_Docente.InstitucionId.Id" class="form-control">
+                                <option ng-repeat="iInstitucion in crearExperienciaDocente.institucion" ng-value="iInstitucion.Id">{{iInstitucion.NombreInstitucion}} </option>
+                            </select>
+
+
+                        <label>Fecha Inicial</label>
+                        <input type="date" ng-model="FechaInicio" ng-required="true"  class="form-control">
+
+                        <label>Fecha Final</label>
+                        <input type="date" ng-model="FechaFinalizacion" ng-required="true"  class="form-control">
+
+
+
+                        <label>Tipo Actividad</label>
+                        <input type="text" ng-model="TipoActividad"  class="form-control" ng-required="true">
+
+                        <label>Campo de Enseñanza</label>
+                        <input type="text" ng-model="CampoEnsenanza"  class="form-control" ng-required="true">
+
+                       
+                        <label>Tipo Dedicacion</label>
+                        <select ng-model="crearExperienciaDocente.experiencia_Docente.TipoDedicacionId.Id"  class="form-control">
+                          <option ng-repeat="iTipoDedicacion in crearExperienciaDocente.tipo_dedicacion" ng-value="iTipoDedicacion.Id">{{iTipoDedicacion.NombreTipoDedicacion}} </option>
+                        </select>
+
+                    </md-content>
+
+                    <md-content class="md-padding" layout-wrap>
+
+                    
+                        <label>Cursos</label>
+                        <input type="text" ng-model="Cursos"  class="form-control" >
+                        <input type="button" class="btn btn-primary" value="Añadir" ng-click="crearExperienciaDocente.addCurso()">
+
+
+                    </md-content>
+
+                    
+                </div>
+            </div>
+            <div class="row" align="center" ng-show="crearExperienciaDocente.vista_previa">
+                <input type="submit" class="btn btn-outline btn-success btn-md" value="Guardar">
+                <button class="btn btn-outline btn-primary btn-md" ng-click="crearExperienciaDocente.limpiar_seleccion()">Cancelar </button>
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div ng-class="{'col-md-8': crearExperienciaDocente.vista_previa , 'col-md-8 col-md-offset-2': !crearExperienciaDocente.vista_previa}">
+  <div class="panel panel-default">
     <div class="panel-heading">
-        crear_experiencia_docente.
+      Experiencia Docente
     </div>
     <div class="panel-body">
-        <p>
-          Ahora puede empezar a construir la vista de crear_experiencia_docente.
-        </p>
+      <div ui-grid="crearExperienciaDocente.gridOptions" ui-grid-auto-resize ui-grid-selection class="ui_grid"></div>
     </div>
-    <div class="panel-footer">
-        Panel Footer
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Cursos
     </div>
+    <div class="panel-body">
+      <div id="grid2" ui-grid="crearExperienciaDocente.gridOptionsCursos" ui-grid-grouping></div>
+    </div>
+  </div>
+<div class="row" align="center" ng-show="!crearExperienciaDocente.vista_previa">
+  <button class="btn btn-outline btn-primary btn-md" ng-click="crearExperienciaDocente.limpiar_seleccion()">Agregar Experiencia Docente </button>
+</div>
+<br>
 </div>

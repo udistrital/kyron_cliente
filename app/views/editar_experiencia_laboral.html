@@ -20,20 +20,19 @@
                                 <option ng-repeat="iInstitucion in editarExperienciaLaboral.institucion" ng-value="iInstitucion.Id">{{iInstitucion.NombreInstitucion}} </option>
                             <select>
 
-                                     
+
                             <label>Cargo</label>
 
-                            <input ng-model="editarExperienciaLaboral.experiencia_actual.Cargo" type="text" class="form-control">
+                            <input ng-model="editarExperienciaLaboral.experiencia_actual.Cargo" type="text" class="form-control" maxlength="30">
 
 
                     </md-content>
 
-   
+
                 </div>
             </div>
       <div class="row" align="center" ng-show="editarExperienciaLaboral.vista_previa">
         <button class="btn btn-outline btn-success btn-md" ng-show="!editarExperienciaLaboral.experiencia_actual.Validacion" ng-click="editarExperienciaLaboral.guardar()">{{ 'GUARDAR' | translate }} </button>
-        <button class="btn btn-outline btn-danger btn-md" ng-click="editarExperienciaLaboral.eliminar()">{{ 'ELIMINAR' | translate }} </button>
         <button class="btn btn-outline btn-primary btn-md" ng-click="editarExperienciaLaboral.limpiar_seleccion()">{{ 'CANCELAR' | translate }} </button>
       </div>
         </div>

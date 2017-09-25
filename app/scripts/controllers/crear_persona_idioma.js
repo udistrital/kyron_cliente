@@ -15,12 +15,11 @@ angular.module('kyronApp')
       'Karma'
     ];
 
-    $rootScope.id = 123;
 
     var self = this;
     self.id = $rootScope.id;
     self.vista_previa = false;
-    self.formacion_academica = {};
+    self.persona_idioma = {};
     self.gridOptions = {
       enableFiltering: true,
       enableSorting: true,
@@ -38,7 +37,7 @@ angular.module('kyronApp')
     self.gridOptions.multiSelect = false;
     var get_persona_idioma = function () {
       personaIdiomaServices.get('persona_idioma', $.param({
-        query:"Vigente:" + true,
+        query:"PersonaId:" + self.id + ",Vigente:" + true,
         limit: 0
       })).then(function (response) {
         self.gridOptions.data = response.data;
@@ -74,13 +73,14 @@ angular.module('kyronApp')
       self.persona_idioma.FechaDato = new Date();
       self.persona_idioma.Validacion = false;
       self.persona_idioma.Vigente = true;
+      self.persona_idioma.PersonaId = self.id;
       personaIdiomaServices.post('persona_idioma', self.persona_idioma)
         .then(function (response) {
           console.log(response);
           if (response.status === 201) {
             swal(
               'Buen trabajo!',
-              'Añadió la formación con éxito',
+              'Añadió la idioma con éxito',
               'success'
             );
 
@@ -97,4 +97,3 @@ angular.module('kyronApp')
     };
 
   });
-

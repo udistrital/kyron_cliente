@@ -1,0 +1,47 @@
+<div class="col-md-4" ng-show="crearCategoriaPersona.vista_previa">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        Agregar Categoria a la Persona
+        </div>
+        <div class="panel-body">
+             <form ng-submit="crearCategoriaPersona.guardar()">
+            <div class="thumbnail">
+                <br>
+                <img src="images/person-flat.png" alt="..." width="150px">
+                <div class="caption">
+                    <md-content class="md-padding" layout-wrap>
+
+                            <label>Tipo Categoría</label>
+                            <select ng-model="crearCategoriaPersona.categoria_persona.IdTipoCategoria.Id" class="form-control">
+                                <option ng-repeat="iTipoCategoria in crearCategoriaPersona.tipo_categoria" ng-value="iTipoCategoria.Id">{{iTipoCategoria.NombreCategoria}} </option>
+                            <select>
+
+                    </md-content>
+
+
+                </div>
+            </div>
+            <div class="row" align="center" ng-show="crearCategoriaPersona.vista_previa">
+                <input type="submit" class="btn btn-outline btn-success btn-md" value="Nuevo">
+                <button class="btn btn-outline btn-primary btn-md" ng-click="crearCategoriaPersona.limpiar_seleccion()">Cancelar </button>
+            </div>
+             </form>
+        </div>
+    </div>
+</div>
+
+<div ng-class="{'col-md-8': crearCategoriaPersona.vista_previa , 'col-md-8 col-md-offset-2': !crearCategoriaPersona.vista_previa}">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Categoría Persona
+        </div>
+        <div class="panel-body">
+            <div ui-grid="crearCategoriaPersona.gridOptions" ui-grid-auto-resize ui-grid-selection class="ui_grid"></div>
+        </div>
+    </div>
+
+    <div class="row" align="center" ng-show="!crearCategoriaPersona.vista_previa">
+        <button class="btn btn-outline btn-primary btn-md" ng-click="crearCategoriaPersona.limpiar_seleccion()">Agregar Categoría </button>
+    </div>
+    <br>
+</div>

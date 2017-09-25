@@ -18,17 +18,16 @@
                             </select>
 
 
-
                             <label>Nivel</label>
                             <select ng-model="crearPersonaIdioma.persona_idioma.NivelIdioma.Id" class="form-control">
-                                <option ng-repeat="iNivelIdioma in crearPersonaIdioma.nivel_idioma | filter: {'Idioma':{'Id':crearPersonaIdioma.persona_idioma.Idioma.Id}}"
+                                <option ng-repeat="iNivelIdioma in crearPersonaIdioma.nivel_idioma | filter: {'IdiomaId':crearPersonaIdioma.persona_idioma.Idioma.Id}"
                                     ng-value="iNivelIdioma.Id">{{iNivelIdioma.NombreNivel}} </option>
                             <select>
           
 
                     </md-content>
 
-   
+
                 </div>
             </div>
             <div class="row" align="center" ng-show="crearPersonaIdioma.vista_previa">

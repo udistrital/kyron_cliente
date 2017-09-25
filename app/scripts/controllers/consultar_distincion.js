@@ -24,6 +24,8 @@ angular.module('kyronApp')
       enableRowSelection: true,
       enableRowHeaderSelection: false,
       columnDefs: [{
+        field: 'PersonaId', displayName: 'Persona', width: 300
+      },{
         field: 'InstitucionId.NombreInstitucion', displayName: 'Institución', width: 400
       },
       {
@@ -32,13 +34,13 @@ angular.module('kyronApp')
       {
         field: 'Fecha', displayName: 'Fecha', cellFilter: 'date:"yyyy-MM-dd"', width: 100
       },
-      
+
       ]
     };
     self.gridOptions.multiSelect = false;
     var get_distincion = function () {
       distincionServices.get('distincion', $.param({
-        query: "PersonaId:" + self.id + ",Vigente:" + true,
+        query:"Vigente:" + true,
         limit: 0
       })).then(function (response) {
         self.gridOptions.data = response.data;

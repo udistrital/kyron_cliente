@@ -16,25 +16,25 @@
                                 <option ng-repeat="iInstitucion in crearExperienciaLaboral.institucion" ng-value="iInstitucion.Id">{{iInstitucion.NombreInstitucion}} </option>
                             <select>
 
-                  
+
                             <label>Fecha de inicio</label>
 
                             <input ng-model="crearExperienciaLaboral.experiencia_laboral.FechaInicio" type="date" class="form-control" ng-required="true">
 
-                    
+
                             <label>Fecha de Finalización</label>
 
                             <input ng-model="crearExperienciaLaboral.experiencia_laboral.FechaFinalizacion" type="date" class="form-control" ng-required="true">
 
-                   
+
                             <label>Cargo</label>
 
-                            <input ng-model="crearExperienciaLaboral.experiencia_laboral.Cargo" type="text" class="form-control" ng-required="true">
+                            <input ng-model="crearExperienciaLaboral.experiencia_laboral.Cargo" type="text" class="form-control" ng-required="true" maxlength="30">
 
 
                     </md-content>
 
-   
+
                 </div>
             </div>
             <div class="row" align="center" ng-show="crearExperienciaLaboral.vista_previa">

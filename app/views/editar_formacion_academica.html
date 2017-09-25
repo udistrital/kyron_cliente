@@ -22,7 +22,7 @@
                             <select>
 
 
-         
+
                             <label>Programa</label>
                             <select ng-model="editarFormacionAcademica.formacion_actual.ProgramaId.Id" class="form-control">
                                 <option ng-repeat="iPrograma in editarFormacionAcademica.programa | filter: {'InstitucionId':{'Id':editarFormacionAcademica.formacion_actual.InstitucionId.Id}}"
@@ -36,23 +36,22 @@
                                 <option ng-repeat="iTitulo in editarFormacionAcademica.titulo | filter: {'Programa':{'Id':editarFormacionAcademica.formacion_actual.ProgramaId.Id}}"
                                     ng-value="iTitulo.Id">{{iTitulo.Nombre}} </option>
                             <select>
-          
-                   
+
+
                             <label>Nombre Proyecto</label>
 
                             <input ng-model="editarFormacionAcademica.formacion_actual.NombreProyecto" type="text" class="form-control">
 
                              <label>Área Conocimiento</label>
 
-                            <input ng-model="editarFormacionAcademica.formacion_actual.AreaConocimiento" type="text" class="form-control">
-                            
+                            <input ng-model="editarFormacionAcademica.formacion_actual.AreaConocimiento" type="text" class="form-control" maxlength="40">
+
                     </md-content>
 
         </div>
       </div>
       <div class="row" align="center" ng-show="editarFormacionAcademica.vista_previa">
         <button class="btn btn-outline btn-success btn-md" ng-show="!editarFormacionAcademica.formacion_actual.Validacion" ng-click="editarFormacionAcademica.guardar()">{{ 'GUARDAR' | translate }} </button>
-        <button class="btn btn-outline btn-danger btn-md" ng-click="editarFormacionAcademica.eliminar()">{{ 'ELIMINAR' | translate }} </button>
         <button class="btn btn-outline btn-primary btn-md" ng-click="editarFormacionAcademica.limpiar_seleccion()">{{ 'CANCELAR' | translate }} </button>
       </div>
     </div>

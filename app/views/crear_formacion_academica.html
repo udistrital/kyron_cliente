@@ -4,7 +4,7 @@
             Crear Formación Académica
         </div>
         <div class="panel-body">
-            <form ng-submit="crearFormacionAcademica.guardar()">
+            <form name="formacion_form" ng-submit="formacion_form.$valid && crearFormacionAcademica.guardar()">
                 <div class="thumbnail">
                     <br>
                     <img src="images/person-flat.png" alt="..." width="150px">
@@ -12,14 +12,14 @@
                         <md-content class="md-padding" layout-wrap>
 
                             <label>Institución o Entidad</label>
-                            <select ng-model="crearFormacionAcademica.formacion_academica.InstitucionId.Id" class="form-control">
+                            <select ng-model="crearFormacionAcademica.formacion_academica.InstitucionId.Id" class="form-control" required>
                                 <option ng-repeat="iInstitucion in crearFormacionAcademica.institucion" ng-value="iInstitucion.Id">{{iInstitucion.NombreInstitucion}} </option>
                             <select>
 
 
-         
+
                             <label>Programa</label>
-                            <select ng-model="crearFormacionAcademica.formacion_academica.ProgramaId.Id" class="form-control">
+                            <select ng-model="crearFormacionAcademica.formacion_academica.ProgramaId.Id" class="form-control" ng-click="crearFormacionAcademica.obtenerprogramas(crearFormacionAcademica.formacion_academica.InstitucionId.Id)" required>
                                 <option ng-repeat="iPrograma in crearFormacionAcademica.programa | filter: {'InstitucionId':{'Id':crearFormacionAcademica.formacion_academica.InstitucionId.Id}}"
                                     ng-value="iPrograma.Id">{{iPrograma.NombrePrograma}} </option>
                             </select>
@@ -27,41 +27,41 @@
 
 
                             <label>Título</label>
-                            <select ng-model="crearFormacionAcademica.formacion_academica.Titulo.Id" class="form-control">
+                            <select ng-model="crearFormacionAcademica.formacion_academica.Titulo.Id" class="form-control" ng-click="crearFormacionAcademica.obtenertitulos(crearFormacionAcademica.formacion_academica.ProgramaId.Id)" required>
                                 <option ng-repeat="iTitulo in crearFormacionAcademica.titulo | filter: {'Programa':{'Id':crearFormacionAcademica.formacion_academica.ProgramaId.Id}}"
                                     ng-value="iTitulo.Id">{{iTitulo.Nombre}} </option>
                             <select>
-          
 
 
-                  
+
+
                             <label>Fecha de inicio</label>
 
                             <input ng-model="crearFormacionAcademica.formacion_academica.FechaInicio" type="date" class="form-control" ng-required="true">
 
-              
 
 
-                    
+
+
                             <label>Fecha de Finalización</label>
 
                             <input ng-model="crearFormacionAcademica.formacion_academica.FechaFinalizacion" type="date" class="form-control" ng-required="true">
 
-  
 
 
-                   
+
+
                             <label>Nombre Proyecto</label>
 
                             <input ng-model="crearFormacionAcademica.formacion_academica.NombreProyecto" type="text" class="form-control" ng-required="true">
 
                              <label>Área Conocimiento</label>
 
-                            <input ng-model="crearFormacionAcademica.formacion_academica.AreaConocimiento" type="text" class="form-control" ng-required="true">
+                            <input ng-model="crearFormacionAcademica.formacion_academica.AreaConocimiento" type="text" class="form-control" ng-required="true" maxlength="40">
 
                     </md-content>
 
-   
+
                 </div>
             </div>
             <div class="row" align="center" ng-show="crearFormacionAcademica.vista_previa">

@@ -11,7 +11,7 @@
  angular.module('kyronApp')
    .filter('filtroDatoProduccion', function (produccionAcademicaServices) {
      var opcion = [];
-     produccionAcademicaServices.get("opcion_dato", "").then(function (response) {
+     produccionAcademicaServices.get("opcion_dato", "limit=0").then(function (response) {
 
        opcion = response.data;
      });
@@ -29,15 +29,13 @@
 
 
 
-         // dato.Dominio = JSON.parse(dato.Dominio);
-         // console.log(dato.Dominio.Entrada);
          var retorno = JSON.stringify(dato);
          if (retorno.includes("input")) {
            return value;
          } else if (retorno.includes("select")) {
-           var indice =0;
+           var indice = 0;
            for(var i=0; i < opcion.length; i++){
-             if(opcion[i].Id == value){
+             if(opcion[i].Id === parseInt(value)){
                indice = i;
              }
 
